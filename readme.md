@@ -33,7 +33,7 @@ Para executar o projeto siga os comandos abaixo:
 - **Acesse o projeto pela URL http://127.0.0.1:8001.**
 - **Caso apareça um erro de chave execute o comando "php artisan key:generate" dentro do container.**
 
-- **User criado é o joao@joao.com com senha 123456.**
+- **User criado é o gabriel@gabriel.com com senha 123456.**
 
 
 ## Licença
