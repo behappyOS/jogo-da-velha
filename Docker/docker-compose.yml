@@ -1,0 +1,40 @@
+version: '3'
+
+volumes:
+  jogo-da-velha-data:
+    driver: local
+  data:
+    driver: local
+
+networks:
+  backend:
+    driver: "bridge"
+
+services:
+  jogo-da-velha:
+    image: psychemedics/apache:7.2
+    container_name: jogo-da-velha
+    volumes:
+      - ../:/var/www/html/
+    ports:
+      - "8001:8080"
+    depends_on:
+      - mysqldb_jv
+    networks:
+      - backend
+  mysqldb_jv:
+    container_name: mysqldb_jv
+    image: mysql:5.7
+    volumes:
+      - data:/var/lib/mysql_jv
+    ports:
+      - '3306:3306'
+    restart: always
+    networks:
+      - backend
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=jogo
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+
